@@ -1,6 +1,6 @@
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
-
+#test for pull request template
 class HandleRequests(BaseHTTPRequestHandler):
     def parse_url(self, path):
         path_params = path.split("/")
@@ -82,7 +82,7 @@ class HandleRequests(BaseHTTPRequestHandler):
             #     else:
             #         response = f"{get_all_locations()}"
 
-         # Response from parse_url() is a tuple with 3
+        # Response from parse_url() is a tuple with 3
         # items in it, which means the request was for
         # `/resource?parameter=value`
         elif len(parsed) == 3:
