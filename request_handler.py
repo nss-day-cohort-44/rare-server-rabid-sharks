@@ -1,5 +1,6 @@
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
+from tags import *
 
 class HandleRequests(BaseHTTPRequestHandler):
     def parse_url(self, path):
@@ -60,6 +61,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         # `/animals` or `/animals/2`
         if len(parsed) == 2:
             ( resource, id ) = parsed
+            
 
             # if resource == "animals":
             #     if id is not None:
