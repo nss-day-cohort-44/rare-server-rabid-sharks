@@ -96,7 +96,7 @@ def get_user_by_email(email):
 
         user = USER(data["id"],data["first_name"],data["last_name"],data["email"],data["password"],data["bio"],data["username"],data["profile_image_url"],data["created_on"],data["active"],data["account_type_id"])
 
-    return json.dumps(user)
+    return json.dumps(user.__dict__)
 
 
 def create_user(new_user):
