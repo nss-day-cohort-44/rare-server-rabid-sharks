@@ -1,6 +1,12 @@
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
+
 from tags import *
+
+
+
+
+
 
 class HandleRequests(BaseHTTPRequestHandler):
     def parse_url(self, path):
@@ -68,11 +74,12 @@ class HandleRequests(BaseHTTPRequestHandler):
             #         response = f"{get_single_animal(id)}"
             #     else:
             #         response = f"{get_all_animals()}"
-            # elif resource == "customers":
-            #     if id is not None:
-            #         response = f"{get_single_customer(id)}"
-            #     else:
-            #         response = f"{get_all_customers()}"
+            if resource == "tags":
+                if id is not None:
+                    response = f"{get_single_tag(id)}"
+                    pass
+                else:
+                    response = f"{get_all_tags()}"
             # elif resource == "employees":
             #     if id is not None:
             #         response = f"{get_single_employee(id)}"
@@ -128,8 +135,8 @@ class HandleRequests(BaseHTTPRequestHandler):
         # function next.
         # if resource == "animals":
         #     new_entry = create_animal(post_body)
-        # elif resource == "locations":
-        #     new_entry = create_location(post_body)
+        if resource == "tags":
+              new_entry = create_tag(post_body)
         # elif resource == "employees":
         #     new_entry = create_employee(post_body)
         # elif resource == "customers":
@@ -148,8 +155,8 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Delete a single animal from the list
         # if resource == "animals":
         #     delete_animal(id)
-        # elif resource == "locations":
-        #     delete_location(id)
+        if resource == "tags":
+              delete_tag(id)
         # elif resource == "employees":
         #     delete_employee(id)
         # elif resource == "customers":
@@ -173,8 +180,8 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Delete a single animal from the list
         # if resource == "animals":
         #     update_animal(id, post_body)
-        # elif resource == "customers":
-        #     update_customer(id, post_body)
+        if resource == "tags":
+             update_tag(id, post_body)
         # elif resource == "employees":
         #     update_employee(id, post_body)
         # elif resource == "locations":

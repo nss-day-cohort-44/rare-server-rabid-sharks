@@ -83,7 +83,3 @@ INSERT INTO `Tag` VALUES (null, "Food");
 INSERT INTO `Tag` VALUES (null, "Mouth-breathing");
 INSERT INTO `Tag` VALUES (null, "Sports");
 
-SELECT
-   t.id,
-  t.label
-FROM Tag t

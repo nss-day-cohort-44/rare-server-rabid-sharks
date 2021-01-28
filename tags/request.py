@@ -5,7 +5,7 @@ from models import Tag
 
 def get_all_tags():
     # Open a connection to the database
-    with sqlite3.connect("./kennel.db") as conn:
+    with sqlite3.connect("./rare.db") as conn:
         conn.row_factory = sqlite3.Row
         db_cursor = conn.cursor()
 
@@ -14,7 +14,7 @@ def get_all_tags():
         SELECT
             t.id,
             t.label
-        FROM Tag t
+        FROM Tags t
         """)
 
         # Initialize an empty list to hold all tag representations
@@ -35,7 +35,7 @@ def get_all_tags():
 
 def get_single_tag(id):
     # Open a connection to the database
-    with sqlite3.connect("./kennel.db") as conn:
+    with sqlite3.connect("./rare.db") as conn:
         conn.row_factory = sqlite3.Row
         db_cursor = conn.cursor()
 
@@ -56,7 +56,7 @@ def get_single_tag(id):
 
 
 def create_tag(new_tag):
-    with sqlite3.connect("./kennel.db") as conn:
+    with sqlite3.connect("./rare.db") as conn:
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
@@ -75,7 +75,7 @@ def create_tag(new_tag):
 
 
 def update_tag(id, new_tag):
-    with sqlite3.connect("./kennel.db") as conn:
+    with sqlite3.connect("./rare.db") as conn:
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
