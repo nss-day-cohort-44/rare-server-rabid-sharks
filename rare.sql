@@ -97,3 +97,11 @@ INSERT INTO `Users` VALUES(null, "Frank", "Frankerson", "frank@lowe.gmal", "Yaaa
 
 INSERT INTO `Posts` VALUES (null, 1, 2, "Title 1", 01282021, "fake url", "fake news", TRUE);
 INSERT INTO `Posts` VALUES (null, 1, 2, "Title 2", 01282021, "fake url", "fake news", TRUE);
+
+INSERT INTO `Tags` VALUES (null, "Food");
+INSERT INTO `Tags` VALUES (null, "Mouth-breathing");
+INSERT INTO `Tags` VALUES (null, "Sports");
+
+INSERT INTO `Comments` VALUES ( 1, 2, "Comment 1", 1);
+INSERT INTO `Comments` VALUES ( 2, 1, "Comment 2", 2);
+

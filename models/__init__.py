@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-
-from .user import USER
-=======
 from .post import Post
->>>>>>> main
+from .tag import Tag
+from .user import USER

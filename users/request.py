@@ -22,9 +22,8 @@ def get_all_users():
             u.profile_image_url,
             u.created_on,
             u.active,
-            account_type_id
-        WHERE u.id = ?
-        FROM User u
+            u.account_type_id
+        FROM Users u
         """)
 
         users = []
@@ -58,9 +57,10 @@ def get_single_user(id):
             u.profile_image_url,
             u.created_on,
             u.active,
-            account_type_id
-        FROM User u
-        """, (id,))
+            u.account_type_id
+        FROM Users u
+        WHERE id = ?
+        """, (id, ))
 
         data= db_cursor.fetchone()
 
@@ -76,13 +76,13 @@ def create_user(new_user):
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
-        INSERT INTO USER
+        INSERT INTO USERS
             ( first_name, last_name, email, password, bio, username, created_on, profile_image_url, active, account_type_id )
         VALUES
             ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         """, (new_user['first_name'], new_user['last_name'],
               new_user['email'], new_user['password'] , new_user['bio'],
-              new_user['username'], new_user["created_on"], new_user['profile_image_url'],new_user['active'],new_user['account_type_id'],))
+              new_user['username'], new_user["created_on"], new_user['profile_image_url'],new_user['active'],new_user['account_type_id']))
 
         id = db_cursor.lastrowid
 
@@ -96,20 +96,20 @@ def update_user(id, new_user):
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
-        UPDATE USER
+        UPDATE Users
             SET
-                u.first_name = ?
-                u.last_name = ?
-                u.email = ?
-                u.password = ?
-                u.bio = ?
-                u.username = ?
-                u.profile_image_url = ?
-                u.created_on = ?
-                u.active = ?
+                first_name = ?,
+                last_name = ?,
+                email = ?,
+                password = ?,
+                bio = ?,
+                username = ?,
+                profile_image_url = ?,
+                created_on = ?,
+                active = ?,
                 account_type_id = ?
         WHERE id = ?
-        """, (new_user["first_name"],new_user["last_name"],new_user["email"],new_user["password"],new_user["bio"],new_user["username"],new_user["profile_image_url"],new_user["created_on"],new_user["active"],new_user["account_type_id"], id),)
+        """, (new_user["first_name"], new_user["last_name"], new_user["email"], new_user["password"], new_user["bio"], new_user["username"], new_user["profile_image_url"], new_user["created_on"], new_user["active"], new_user["account_type_id"], id, ))
 
         rows_affected = db_cursor.rowcount
     if rows_affected == 0:
