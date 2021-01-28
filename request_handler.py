@@ -139,7 +139,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         # function next.
         if resource == "posts":
             new_entry = create_post(post_body)
-        elif resource == "locations":
+        elif resource == "tags":
             new_entry = create_tag(post_body)
         elif resource == "users":
             new_entry = create_user(post_body)
@@ -189,7 +189,7 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         # Delete a single animal from the list
         if resource == "posts":
-           update_post(id, post_body)
+            update_post(id, post_body)
         elif resource == "tags":
            update_tag(id, post_body)
         elif resource == "users":

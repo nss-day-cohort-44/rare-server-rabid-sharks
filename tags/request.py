@@ -44,7 +44,8 @@ def get_single_tag(id):
         SELECT
             t.id,
             t.label
-        FROM Tag t
+        FROM tags t
+        WHERE t.id = ?
         """, (id, ))
 
         data = db_cursor.fetchone()
@@ -60,11 +61,11 @@ def create_tag(new_tag):
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
-        INSERT INTO Tag
+        INSERT INTO Tags
             ( label )
         VALUES
             ( ? );
-        """, ( new_tag['label'] )
+        """, ( new_tag['label'], )
         )
 
         id = db_cursor.lastrowid
@@ -79,7 +80,7 @@ def update_tag(id, new_tag):
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
-        UPDATE Tag
+        UPDATE Tags
             SET
                 label = ?
         WHERE id = ?
@@ -102,7 +103,7 @@ def delete_tag(id):
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
-        DELETE FROM tag
+        DELETE FROM tags
         WHERE id = ?
         """, (id, ))
 

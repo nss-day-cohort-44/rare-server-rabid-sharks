@@ -94,6 +94,10 @@ CREATE TABLE "Categories" (
 INSERT INTO `Users` VALUES(null, "Silas", "Lowe", "silas@lowe.gmal", "Ahhhh", "I are me", "Slowe", "www.silaslowe.net", "10/10/10", "True", 2)
 
 INSERT INTO `Users` VALUES(null, "Frank", "Frankerson", "frank@lowe.gmal", "Yaaaaaaa", "I are not me", "Flowe", "www.frankerson.net", "11/11/11", "True", 1)
+INSERT INTO `Tags` VALUES (null, "Food");
+INSERT INTO `Tags` VALUES (null, "Mouth-breathing");
+INSERT INTO `Tags` VALUES (null, "Sports");
+
 
 INSERT INTO `Posts` VALUES (null, 1, 2, "Title 1", 01282021, "fake url", "fake news", TRUE);
 INSERT INTO `Posts` VALUES (null, 1, 2, "Title 2", 01282021, "fake url", "fake news", TRUE);
@@ -104,4 +108,10 @@ INSERT INTO `Tags` VALUES (null, "Sports");
 
 INSERT INTO `Comments` VALUES ( 1, 2, "Comment 1", 1);
 INSERT INTO `Comments` VALUES ( 2, 1, "Comment 2", 2);
+SELECT
+  t.id,
+  t.label
+FROM Tags t
+
+SELECT * FROM Tags ORDER BY id DESC;
 
