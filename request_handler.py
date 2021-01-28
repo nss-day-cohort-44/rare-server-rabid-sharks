@@ -1,10 +1,10 @@
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
-
+from posts import *
 from tags import *
-
-
-
+# 3
+# 4
+# 5
 
 
 
@@ -69,23 +69,27 @@ class HandleRequests(BaseHTTPRequestHandler):
             ( resource, id ) = parsed
             
 
-            # if resource == "animals":
-            #     if id is not None:
-            #         response = f"{get_single_animal(id)}"
-            #     else:
-            #         response = f"{get_all_animals()}"
-            if resource == "tags":
+            if resource == "posts":
                 if id is not None:
-                    response = f"{get_single_tag(id)}"
-                    pass
+                    response = f"{get_single_post(id)}"
                 else:
-                    response = f"{get_all_tags()}"
-            # elif resource == "employees":
+                    response = f"{get_all_posts()}"
+            elif resource == "tags":
+                if id is not None:
+                     response = f"{get_single_tag(id)}"
+                else:
+                     response = f"{get_all_tags()}"
+            # 3elif resource == "employees":
             #     if id is not None:
             #         response = f"{get_single_employee(id)}"
             #     else:
             #         response = f"{get_all_employees()}"
-            # elif resource == "locations":
+            # 4elif resource == "locations":
+            #     if id is not None:
+            #         response = f"{get_single_location(id)}"
+            #     else:
+            #         response = f"{get_all_locations()}"
+            # 5elif resource == "locations":
             #     if id is not None:
             #         response = f"{get_single_location(id)}"
             #     else:
@@ -133,12 +137,16 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Add a new animal to the list. Don't worry about
         # the orange squiggle, you'll define the create_animal
         # function next.
-        # if resource == "animals":
-        #     new_entry = create_animal(post_body)
-        if resource == "tags":
-              new_entry = create_tag(post_body)
+        # if resource == "posts":
+        #     new_entry = create_post(post_body)
+        # elif resource == "locations":
+        #     new_entry = create_location(post_body)
         # elif resource == "employees":
         #     new_entry = create_employee(post_body)
+        # elif resource == "customers":
+        #     new_entry = create_customer(post_body)
+        # elif resource == "customers":
+        #     new_entry = create_customer(post_body)
         # elif resource == "customers":
         #     new_entry = create_customer(post_body)
 
@@ -153,12 +161,14 @@ class HandleRequests(BaseHTTPRequestHandler):
         (resource, id) = self.parse_url(self.path)
 
         # Delete a single animal from the list
-        # if resource == "animals":
-        #     delete_animal(id)
-        if resource == "tags":
-              delete_tag(id)
+        if resource == "posts":
+            delete_post(id)
+        # elif resource == "locations":
+        #     delete_location(id)
         # elif resource == "employees":
         #     delete_employee(id)
+        # elif resource == "customers":
+        #     delete_customer(id)
         # elif resource == "customers":
         #     delete_customer(id)
 
@@ -178,12 +188,14 @@ class HandleRequests(BaseHTTPRequestHandler):
         success = False
 
         # Delete a single animal from the list
-        # if resource == "animals":
-        #     update_animal(id, post_body)
-        if resource == "tags":
-             update_tag(id, post_body)
+        # if resource == "posts":
+        #     update_post(id, post_body)
+        # elif resource == "customers":
+        #     update_customer(id, post_body)
         # elif resource == "employees":
         #     update_employee(id, post_body)
+        # elif resource == "locations":
+        #     update_location(id, post_body)
         # elif resource == "locations":
         #     update_location(id, post_body)
 

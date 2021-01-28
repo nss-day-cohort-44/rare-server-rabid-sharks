@@ -83,3 +83,6 @@ INSERT INTO `Tag` VALUES (null, "Food");
 INSERT INTO `Tag` VALUES (null, "Mouth-breathing");
 INSERT INTO `Tag` VALUES (null, "Sports");
 
+
+INSERT INTO `Posts` VALUES (null, 1, 2, "Title 1", 01282021, "fake url", "fake news", TRUE);
+INSERT INTO `Posts` VALUES (null, 1, 2, "Title 2", 01282021, "fake url", "fake news", TRUE);
