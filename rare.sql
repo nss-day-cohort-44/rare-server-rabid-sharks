@@ -81,6 +81,10 @@ CREATE TABLE "Categories" (
   "label" varchar
 );
 
+INSERT INTO `Tags` VALUES (null, "Food");
+INSERT INTO `Tags` VALUES (null, "Mouth-breathing");
+INSERT INTO `Tags` VALUES (null, "Sports");
+
 
 INSERT INTO `Posts` VALUES (null, 1, 2, "Title 1", 01282021, "fake url", "fake news", TRUE);
 INSERT INTO `Posts` VALUES (null, 1, 2, "Title 2", 01282021, "fake url", "fake news", TRUE);
