@@ -189,7 +189,7 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         # Delete a single animal from the list
         if resource == "posts":
-           update_post(id, post_body)
+            update_post(id, post_body)
         elif resource == "tags":
            update_tag(id, post_body)
         # elif resource == "employees":
