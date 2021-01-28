@@ -104,8 +104,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             # Is the resource `customers` and was there a
             # query parameter that specified the customer
             # email as a filtering value?
-            # if key == "email" and resource == "customers":
-            #     response = get_customers_by_email(value)
+            if key == "email" and resource == "customers":
+                response = get_customers_by_email(value)
 
             # elif key == "location_id" and resource == "animals":
             #     response = get_animals_by_location_id(value)
