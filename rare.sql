@@ -1,3 +1,14 @@
+DROP TABLE IF EXISTS `Categories`;
+DROP TABLE IF EXISTS `Tags`;
+DROP TABLE IF EXISTS `Reactions`;
+DROP TABLE IF EXISTS `PostReactions`;
+DROP TABLE IF EXISTS `Posts`;
+DROP TABLE IF EXISTS `PostTags`;
+DROP TABLE IF EXISTS `Comments`;
+DROP TABLE IF EXISTS `Subscriptions`;
+DROP TABLE IF EXISTS `DemotionQueue`;
+DROP TABLE IF EXISTS `Users`;
+
 CREATE TABLE "AccountTypes" (
   "id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "label" varchar
@@ -81,6 +92,9 @@ CREATE TABLE "Categories" (
   "label" varchar
 );
 
+INSERT INTO `Users` VALUES(null, "Silas", "Lowe", "silas@lowe.gmal", "Ahhhh", "I are me", "Slowe", "www.silaslowe.net", "10/10/10", "True", 2)
+
+INSERT INTO `Users` VALUES(null, "Frank", "Frankerson", "frank@lowe.gmal", "Yaaaaaaa", "I are not me", "Flowe", "www.frankerson.net", "11/11/11", "True", 1)
 INSERT INTO `Tags` VALUES (null, "Food");
 INSERT INTO `Tags` VALUES (null, "Mouth-breathing");
 INSERT INTO `Tags` VALUES (null, "Sports");
@@ -91,6 +105,14 @@ INSERT INTO `Posts` VALUES (null, 1, 2, "Title 2", 01282021, "fake url", "fake n
 
 INSERT INTO `Users` VALUES(null, "Silas", "Lowe", "silas@lowe.gmal", "Ahhhh", "I are me", "Slowe", "www.silaslowe.net", "10/10/10", "True", 2);
 INSERT INTO `Users` VALUES(null, "Frank", "Frankerson", "frank@lowe.gmal", "Yaaaaaaa", "I are not me", "Flowe", "www.frankerson.net", "11/11/11", "True", 1);
+INSERT INTO `Tags` VALUES (null, "Food");
+INSERT INTO `Tags` VALUES (null, "Mouth-breathing");
+INSERT INTO `Tags` VALUES (null, "Sports");
+
+SELECT
+  t.id,
+  t.label
+FROM Tags t
 
 INSERT INTO `Tags` VALUES (null, "Food");
 INSERT INTO `Tags` VALUES (null, "Mouth-breathing");

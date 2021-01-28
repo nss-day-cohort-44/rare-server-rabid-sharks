@@ -68,7 +68,7 @@ def create_category(new_category):
         INSERT INTO Categories
             ( label )
         VALUES
-            ( ?, ?, ?, ?, ?);
+            ( ? );
         """, (new_category['label'], ))
 
         # The `lastrowid` property on the cursor will return
@@ -101,7 +101,7 @@ def update_category(id, new_category):
             SET
                 label = ?
         WHERE id = ? 
-        """, (new_category['name'], id, ))  # Here, we are using a dictionary to create a tuple    
+        """, (new_category['label'], id, ))  # Here, we are using a dictionary to create a tuple    
         # Were any rows affected?
         # Did the client send an `id` that exists?
         rows_affected = db_cursor.rowcount
