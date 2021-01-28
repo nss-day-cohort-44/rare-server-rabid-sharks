@@ -147,8 +147,4 @@ rare.db
 .vscode
 rare.sql
 
-<<<<<<< HEAD
-test_handler.py
 .gitignore
-=======
->>>>>>> main
