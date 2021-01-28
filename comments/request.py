@@ -13,7 +13,6 @@ def get_all_comments():
             c.post_id,
             c.author_id,
             c.content,
-            c.subject,
             c.created_on
         FROM Comments c
         """)
@@ -23,9 +22,8 @@ def get_all_comments():
         dataset = db_cursor.fetchall()
         # iterate the list
         for row in dataset:
-            comment = Comment(row['id'], row['post_id'],
-                                row['author_id'], row['content'], 
-                                row['subject'], row['created_on'])
+            comment = Comment(row['id'], row['post_id'], 
+                                row['author_id'], row['content'], row['created_on'],)
             comments.append(comment.__dict__)
     return json.dumps(comments)
 
@@ -39,7 +37,6 @@ def get_single_comment(id):
             c.post_id,
             c.author_id,
             c.content,
-            c.subject,
             c.created_on
         FROM Comments c
         WHERE c.id = ?
@@ -47,7 +44,7 @@ def get_single_comment(id):
         data = db_cursor.fetchone()
         comment = Comment(data['id'], data['post_id'],
                             data['author_id'], data['content'],
-                            data['subject'], data['created_on'])
+                            data['created_on'])
         return json.dumps(comment.__dict__)
 
 def get_comments_by_post_id(post_id):
@@ -61,7 +58,6 @@ def get_comments_by_post_id(post_id):
             c.post_id,
             c.author_id,
             c.content,
-            c.subject,
             c.created_on
         FROM Comments c
         WHERE c.post_id = ?
@@ -72,7 +68,7 @@ def get_comments_by_post_id(post_id):
         for row in dataset:
             comment = Comment(row['id'], row['post_id'],
                                 row['author_id'], row['content'], 
-                                row['subject'], row['created_on'])
+                                row['created_on'])
             comments.append(comment.__dict__)
 
     return json.dumps(comments)
@@ -94,12 +90,10 @@ def update_comment(id, new_comment):
                 post_id = ?,
                 author_id = ?,
                 content = ?,
-                subject = ?,
                 created_on = ?
         WHERE id = ?
         """, (new_comment['post_id'], new_comment['author_id'], 
-                new_comment['content'], new_comment['subject'], 
-                new_comment['created_on'], id, ))
+                new_comment['content'], new_comment['created_on'], id, ))
         # count the rows affected and check if the id provided exists
         rows_affected = db_cursor.rowcount
     if rows_affected == 0:
@@ -110,17 +104,16 @@ def update_comment(id, new_comment):
         return True
 
 def create_comment(new_comment):
-    with sqlite3.connect("./kennel.db") as conn:
+    with sqlite3.connect("./rare.db") as conn:
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
         INSERT INTO Comments
-            ( post_id, author_id, content, subject, created_on )
+            ( post_id, author_id, content, created_on )
         VALUES
-            ( ?, ?, ?, ?, ?);
+            ( ?, ?, ?, ? );
         """, (new_comment['post_id'], new_comment['author_id'], 
-            new_comment['content'], new_comment['subject'], 
-            new_comment['created_on'], ))
+            new_comment['content'], new_comment['created_on'], ))
 # The `lastrowid` property on the cursor will return
         # the primary key of the last thing that got added to
         # the database.

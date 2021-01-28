@@ -101,3 +101,7 @@ INSERT INTO `Users` VALUES(null, "Frank", "Frankerson", "frank@lowe.gmal", "Yaaa
 SELECT * FROM Comments;
 
 DROP TABLE IF EXISTS `Comments`;
+
+SELECT
+           *
+        FROM Comments c;
