@@ -136,8 +136,8 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Add a new animal to the list. Don't worry about
         # the orange squiggle, you'll define the create_animal
         # function next.
-        # if resource == "posts":
-        #     new_entry = create_post(post_body)
+        if resource == "posts":
+            new_entry = create_post(post_body)
         # elif resource == "locations":
         #     new_entry = create_location(post_body)
         # elif resource == "employees":
@@ -187,8 +187,8 @@ class HandleRequests(BaseHTTPRequestHandler):
         success = False
 
         # Delete a single animal from the list
-        # if resource == "posts":
-        #     update_post(id, post_body)
+        if resource == "posts":
+            update_post(id, post_body)
         # elif resource == "customers":
         #     update_customer(id, post_body)
         # elif resource == "employees":
