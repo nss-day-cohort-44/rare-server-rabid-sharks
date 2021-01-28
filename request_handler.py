@@ -94,7 +94,7 @@ class HandleRequests(BaseHTTPRequestHandler):
             #     else:
             #         response = f"{get_all_locations()}"
 
-         # Response from parse_url() is a tuple with 3
+        # Response from parse_url() is a tuple with 3
         # items in it, which means the request was for
         # `/resource?parameter=value`
         elif len(parsed) == 3:
