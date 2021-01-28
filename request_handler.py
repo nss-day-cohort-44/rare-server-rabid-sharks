@@ -137,10 +137,10 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Add a new animal to the list. Don't worry about
         # the orange squiggle, you'll define the create_animal
         # function next.
-        # if resource == "posts":
-        #     new_entry = create_post(post_body)
-        # elif resource == "locations":
-        #     new_entry = create_location(post_body)
+        if resource == "posts":
+            new_entry = create_post(post_body)
+        elif resource == "locations":
+            new_entry = create_tag(post_body)
         # elif resource == "employees":
         #     new_entry = create_employee(post_body)
         # elif resource == "customers":
@@ -163,8 +163,8 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Delete a single animal from the list
         if resource == "posts":
             delete_post(id)
-        # elif resource == "locations":
-        #     delete_location(id)
+        elif resource == "tags":
+            delete_tag(id)
         # elif resource == "employees":
         #     delete_employee(id)
         # elif resource == "customers":
@@ -188,10 +188,10 @@ class HandleRequests(BaseHTTPRequestHandler):
         success = False
 
         # Delete a single animal from the list
-        # if resource == "posts":
-        #     update_post(id, post_body)
-        # elif resource == "customers":
-        #     update_customer(id, post_body)
+        if resource == "posts":
+           update_post(id, post_body)
+        elif resource == "tags":
+           update_tag(id, post_body
         # elif resource == "employees":
         #     update_employee(id, post_body)
         # elif resource == "locations":
