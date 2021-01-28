@@ -3,7 +3,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from posts import *
 from tags import *
 from users import *
-# 4
+from categories import *
 # 5
 
 
@@ -76,19 +76,19 @@ class HandleRequests(BaseHTTPRequestHandler):
                     response = f"{get_all_posts()}"
             elif resource == "tags":
                 if id is not None:
-                     response = f"{get_single_tag(id)}"
+                    response = f"{get_single_tag(id)}"
                 else:
-                     response = f"{get_all_tags()}"
+                    response = f"{get_all_tags()}"
             elif resource == "users":
                 if id is not None:
                     response = f"{get_single_user(id)}"
                 else:
                     response = f"{get_all_users()}"
-            # 4elif resource == "locations":
-            #     if id is not None:
-            #         response = f"{get_single_location(id)}"
-            #     else:
-            #         response = f"{get_all_locations()}"
+            elif resource == "categories":
+                if id is not None:
+                    response = f"{get_single_category(id)}"
+                else:
+                    response = f"{get_all_categories()}"
             # 5elif resource == "locations":
             #     if id is not None:
             #         response = f"{get_single_location(id)}"
@@ -143,8 +143,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             new_entry = create_tag(post_body)
         elif resource == "users":
             new_entry = create_user(post_body)
-        # elif resource == "customers":
-        #     new_entry = create_customer(post_body)
+        elif resource == "categories":
+            new_entry = create_category(post_body)
         # elif resource == "customers":
         #     new_entry = create_customer(post_body)
         # elif resource == "customers":
@@ -165,8 +165,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             delete_post(id)
         elif resource == "tags":
             delete_tag(id)
-        # elif resource == "employees":
-        #     delete_employee(id)
+        elif resource == "categories":
+            delete_category(id)
         # elif resource == "customers":
         #     delete_customer(id)
         # elif resource == "customers":
@@ -191,11 +191,11 @@ class HandleRequests(BaseHTTPRequestHandler):
         if resource == "posts":
             update_post(id, post_body)
         elif resource == "tags":
-           update_tag(id, post_body)
+            update_tag(id, post_body)
         elif resource == "users":
             update_user(id, post_body)
-        # elif resource == "locations":
-        #     update_location(id, post_body)
+        elif resource == "categories":
+            update_category(id, post_body)
         # elif resource == "locations":
         #     update_location(id, post_body)
 
