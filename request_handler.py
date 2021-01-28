@@ -139,7 +139,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         # function next.
         if resource == "posts":
             new_entry = create_post(post_body)
-        elif resource == "locations":
+        elif resource == "tags":
             new_entry = create_tag(post_body)
         # elif resource == "employees":
         #     new_entry = create_employee(post_body)
@@ -191,7 +191,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         if resource == "posts":
            update_post(id, post_body)
         elif resource == "tags":
-           update_tag(id, post_body
+           update_tag(id, post_body)
         # elif resource == "employees":
         #     update_employee(id, post_body)
         # elif resource == "locations":

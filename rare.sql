@@ -91,3 +91,6 @@ SELECT
   t.id,
   t.label
 FROM Tags t
+
+SELECT * FROM Tags ORDER BY id DESC;
+
