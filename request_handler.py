@@ -1,7 +1,12 @@
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from posts.request import create_post, delete_post, get_all_posts, get_single_post, update_post
 from posts import *
+# 2
+# 3
+# 4
+# 5
+
+
 
 class HandleRequests(BaseHTTPRequestHandler):
     def parse_url(self, path):
@@ -68,17 +73,22 @@ class HandleRequests(BaseHTTPRequestHandler):
                     response = f"{get_single_post(id)}"
                 else:
                     response = f"{get_all_posts()}"
-            # elif resource == "customers":
+            # 2elif resource == "customers":
             #     if id is not None:
             #         response = f"{get_single_customer(id)}"
             #     else:
             #         response = f"{get_all_customers()}"
-            # elif resource == "employees":
+            # 3elif resource == "employees":
             #     if id is not None:
             #         response = f"{get_single_employee(id)}"
             #     else:
             #         response = f"{get_all_employees()}"
-            # elif resource == "locations":
+            # 4elif resource == "locations":
+            #     if id is not None:
+            #         response = f"{get_single_location(id)}"
+            #     else:
+            #         response = f"{get_all_locations()}"
+            # 5elif resource == "locations":
             #     if id is not None:
             #         response = f"{get_single_location(id)}"
             #     else:
@@ -126,12 +136,16 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Add a new animal to the list. Don't worry about
         # the orange squiggle, you'll define the create_animal
         # function next.
-        if resource == "posts":
-            new_entry = create_post(post_body)
+        # if resource == "posts":
+        #     new_entry = create_post(post_body)
         # elif resource == "locations":
         #     new_entry = create_location(post_body)
         # elif resource == "employees":
         #     new_entry = create_employee(post_body)
+        # elif resource == "customers":
+        #     new_entry = create_customer(post_body)
+        # elif resource == "customers":
+        #     new_entry = create_customer(post_body)
         # elif resource == "customers":
         #     new_entry = create_customer(post_body)
 
@@ -154,6 +168,8 @@ class HandleRequests(BaseHTTPRequestHandler):
         #     delete_employee(id)
         # elif resource == "customers":
         #     delete_customer(id)
+        # elif resource == "customers":
+        #     delete_customer(id)
 
     # Encode the new animal and send in response
         self.wfile.write("".encode())
@@ -171,12 +187,14 @@ class HandleRequests(BaseHTTPRequestHandler):
         success = False
 
         # Delete a single animal from the list
-        if resource == "posts":
-            update_post(id, post_body)
+        # if resource == "posts":
+        #     update_post(id, post_body)
         # elif resource == "customers":
         #     update_customer(id, post_body)
         # elif resource == "employees":
         #     update_employee(id, post_body)
+        # elif resource == "locations":
+        #     update_location(id, post_body)
         # elif resource == "locations":
         #     update_location(id, post_body)
 
