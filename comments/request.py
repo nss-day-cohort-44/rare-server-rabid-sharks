@@ -15,7 +15,7 @@ def get_all_comments():
             c.content,
             c.subject,
             c.created_on
-        FROM Comment c
+        FROM Comments c
         """)
         # inittialize new empty LIST to hold all the emp DICTs
         comments = []
@@ -41,7 +41,7 @@ def get_single_comment(id):
             c.content,
             c.subject,
             c.created_on
-        FROM comment c
+        FROM Comments c
         WHERE c.id = ?
         """, (id,))
         data = db_cursor.fetchone()
@@ -50,7 +50,7 @@ def get_single_comment(id):
                             data['subject'], data['created_on'])
         return json.dumps(comment.__dict__)
 
-def get_comments_by_author_id(author_id):
+def get_comments_by_post_id(post_id):
     with sqlite3.connect('./rare.db') as conn:
         conn.row_factory = sqlite3.Row
         db_cursor = conn.cursor()
@@ -63,9 +63,9 @@ def get_comments_by_author_id(author_id):
             c.content,
             c.subject,
             c.created_on
-        FROM Comment c
-        WHERE c.author_id = ?
-        """, ( author_id, ))
+        FROM Comments c
+        WHERE c.post_id = ?
+        """, ( post_id, ))
 
         comments = []
         dataset = db_cursor.fetchall()
@@ -81,7 +81,7 @@ def delete_comment(id):
     with sqlite3.connect("./rare.db") as conn:
         db_cursor = conn.cursor()
         db_cursor.execute(""" 
-        DELETE FROM Comment
+        DELETE FROM Comments
         WHERE id = ?
         """, (id, ))
 
@@ -89,7 +89,7 @@ def update_comment(id, new_comment):
     with sqlite3.connect("./rare.db") as conn:
         db_cursor = conn.cursor()
         db_cursor.execute(""" 
-        UPDATE Comment
+        UPDATE Comments
             Set
                 post_id = ?,
                 author_id = ?,
@@ -114,7 +114,7 @@ def create_comment(new_comment):
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
-        INSERT INTO Comment
+        INSERT INTO Comments
             ( post_id, author_id, content, subject, created_on )
         VALUES
             ( ?, ?, ?, ?, ?);

@@ -7,6 +7,7 @@ CREATE TABLE "Users" (
   "first_name" varchar,
   "last_name" varchar,
   "email" varchar,
+  "password" varchar,
   "bio" varchar,
   "username" varchar,
   "profile_image_url" varchar,
@@ -79,6 +80,19 @@ CREATE TABLE "Categories" (
   "label" varchar
 );
 
-
 INSERT INTO `Posts` VALUES (null, 1, 2, "Title 1", 01282021, "fake url", "fake news", TRUE);
 INSERT INTO `Posts` VALUES (null, 1, 2, "Title 2", 01282021, "fake url", "fake news", TRUE);
+
+
+INSERT INTO `Comments` VALUES ( 1, 2, "Comment 1", 1);
+INSERT INTO `Comments` VALUES ( 2, 1, "Comment 2", 2);
+
+
+INSERT INTO `Tags` VALUES (null, "Food");
+INSERT INTO `Tags` VALUES (null, "Mouth-breathing");
+INSERT INTO `Tags` VALUES (null, "Sports");
+
+INSERT INTO `Users` VALUES(null, "Silas", "Lowe", "silas@lowe.gmal", "Ahhhh", "I are me", "Slowe", "www.silaslowe.net", "10/10/10", "True", 2);
+INSERT INTO `Users` VALUES(null, "Frank", "Frankerson", "frank@lowe.gmal", "Yaaaaaaa", "I are not me", "Flowe", "www.frankerson.net", "11/11/11", "True", 1);
+
+SELECT * FROM Users;
