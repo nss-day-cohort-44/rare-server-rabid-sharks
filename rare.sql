@@ -53,18 +53,6 @@ CREATE TABLE "Posts" (
   "content" varchar,
   "approved" bit
 );
-<<<<<<< HEAD
-=======
-CREATE TABLE "Comments" (
-  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-  "post_id" INTEGER,
-  "author_id" INTEGER,
-  "content" varchar,
-  "created_on" DATETIME,
-  FOREIGN KEY(`post_id`) REFERENCES `Posts`(`id`),
-  FOREIGN KEY(`author_id`) REFERENCES `Users`(`id`)
-);
->>>>>>> main
 CREATE TABLE "Reactions" (
   "id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "label" varchar,
@@ -146,9 +134,6 @@ FROM Comments;
 
 
 
-<<<<<<< HEAD
-=======
 INSERT INTO `Categories` VALUES ( null, "Category 1");
 INSERT INTO `Categories` VALUES ( null, "Category 2");
 
->>>>>>> main
