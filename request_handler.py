@@ -116,8 +116,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             # elif key == "location_id" and resource == "animals":
             #     response = get_animals_by_location_id(value)
 
-            # elif key == "status" and resource == "animals":
-            #     response = get_animals_by_status(value)
+            elif key == "user_id" and resource == "posts":
+                response = get_posts_by_user_id(value)
 
             if key == "post_id" and resource == "comments":
                 response = get_comments_by_post_id(value)
