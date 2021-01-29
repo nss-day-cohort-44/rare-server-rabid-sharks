@@ -40,7 +40,7 @@ def get_all_posts():
 
             category = Category(row['id'], row['label'])
 
-            post = Post(row['id'], row['user_id'], row['category_id'], row['title'], row['publication_date'], row['image_url'], row['content'], row['approved'])
+            post = Post(row['id'], row['user_id'], row['category_id'], row['title'], row['publication_date'], row['image_url'], row['content'], row['approved'],)
 
 
             post.category = category.__dict__
@@ -68,8 +68,11 @@ def get_single_post(id):
             p.image_url,
             p.content,
             p.approved,
+            u.username,
             c.label label
         FROM posts p
+        Join Users u
+            On u.id = p.user_id
         JOIN Categories c
             ON p.category_id = c.id
         WHERE p.id = ?
@@ -85,7 +88,12 @@ def get_single_post(id):
 
         post.category = category.__dict__
 
-    return json.dumps(post.__dict__)
+        post = post.__dict__
+            
+        post['username'] = data['username']
+
+
+    return json.dumps(post)
 
 def create_post(new_post):
     with sqlite3.connect("./rare.db") as conn:
