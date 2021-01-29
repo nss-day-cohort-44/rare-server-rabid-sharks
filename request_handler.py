@@ -2,9 +2,10 @@ import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from posts import *
 from tags import *
+from comments import *
 from users import *
 from categories import *
-# 5
+
 
 
 
@@ -94,6 +95,11 @@ class HandleRequests(BaseHTTPRequestHandler):
             #         response = f"{get_single_location(id)}"
             #     else:
             #         response = f"{get_all_locations()}"
+            elif resource == "comments":
+                if id is not None:
+                    response = f"{get_single_comment(id)}"
+                else:
+                    response = f"{get_all_comments()}"
 
         # Response from parse_url() is a tuple with 3
         # items in it, which means the request was for
@@ -110,11 +116,11 @@ class HandleRequests(BaseHTTPRequestHandler):
             # elif key == "location_id" and resource == "animals":
             #     response = get_animals_by_location_id(value)
 
-            # elif key == "status" and resource == "animals":
-            #     response = get_animals_by_status(value)
+            elif key == "user_id" and resource == "posts":
+                response = get_posts_by_user_id(value)
 
-            # elif key == "location_id" and resource == "employees":
-            #     response = get_employees_by_location_id(value)
+            if key == "post_id" and resource == "comments":
+                response = get_comments_by_post_id(value)
 
         self.wfile.write(response.encode())
 
@@ -147,8 +153,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             new_entry = create_category(post_body)
         # elif resource == "customers":
         #     new_entry = create_customer(post_body)
-        # elif resource == "customers":
-        #     new_entry = create_customer(post_body)
+        if resource == "comments":
+            new_entry = create_comment(post_body)
 
         # Encode the new animal and send in response
         self.wfile.write(f"{new_entry}".encode())
@@ -169,8 +175,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             delete_category(id)
         # elif resource == "customers":
         #     delete_customer(id)
-        # elif resource == "customers":
-        #     delete_customer(id)
+        elif resource == "comments":
+            delete_comment(id)
 
     # Encode the new animal and send in response
         self.wfile.write("".encode())
@@ -192,6 +198,12 @@ class HandleRequests(BaseHTTPRequestHandler):
             update_post(id, post_body)
         elif resource == "tags":
             update_tag(id, post_body)
+        # elif resource == "employees":
+        #     update_employee(id, post_body)
+        # elif resource == "locations":
+        #     update_location(id, post_body)
+        elif resource == "comments":
+            update_comment(id, post_body)
         elif resource == "users":
             update_user(id, post_body)
         elif resource == "categories":

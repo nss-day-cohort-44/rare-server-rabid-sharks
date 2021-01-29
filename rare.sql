@@ -53,6 +53,8 @@ CREATE TABLE "Posts" (
   "content" varchar,
   "approved" bit
 );
+<<<<<<< HEAD
+=======
 CREATE TABLE "Comments" (
   "id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "post_id" INTEGER,
@@ -62,6 +64,7 @@ CREATE TABLE "Comments" (
   FOREIGN KEY(`post_id`) REFERENCES `Posts`(`id`),
   FOREIGN KEY(`author_id`) REFERENCES `Users`(`id`)
 );
+>>>>>>> main
 CREATE TABLE "Reactions" (
   "id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "label" varchar,
@@ -91,6 +94,25 @@ CREATE TABLE "Categories" (
   "id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "label" varchar
 );
+CREATE TABLE "Comments" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "post_id" INTEGER,
+  "author_id" INTEGER,
+  "content" varchar,
+  "created_on" DATETIME,
+  FOREIGN KEY(`post_id`) REFERENCES `Posts`(`id`),
+  FOREIGN KEY(`author_id`) REFERENCES `Users`(`id`)
+);
+
+INSERT INTO `Posts` VALUES (null, 1, 2, "Title 1", 01282021, "fake url", "fake news", TRUE);
+INSERT INTO `Posts` VALUES (null, 1, 2, "Title 2", 01282021, "fake url", "fake news", TRUE);
+
+
+INSERT INTO `Comments` VALUES (null, 1, 2, "Comment 1", 01282021);
+INSERT INTO `Comments` VALUES (null, 2, 1, "Comment 2", 01292021);
+INSERT INTO `Comments` VALUES (null, 1, 2, "Comment 3", 01302021);
+INSERT INTO `Comments` VALUES (null, 2, 1, "Comment 4", 01302021);
+
 
 INSERT INTO `Users` VALUES(null, "Silas", "Lowe", "silas@lowe.gmal", "Ahhhh", "I are me", "Slowe", "www.silaslowe.net", "10/10/10", "True", 2)
 
@@ -99,7 +121,16 @@ INSERT INTO `Tags` VALUES (null, "Food");
 INSERT INTO `Tags` VALUES (null, "Mouth-breathing");
 INSERT INTO `Tags` VALUES (null, "Sports");
 
+INSERT INTO `Users` VALUES(null, "Silas", "Lowe", "silas@lowe.gmal", "Ahhhh", "I are me", "Slowe", "www.silaslowe.net", "10/10/10", "True", 2);
+INSERT INTO `Users` VALUES(null, "Frank", "Frankerson", "frank@lowe.gmal", "Yaaaaaaa", "I are not me", "Flowe", "www.frankerson.net", "11/11/11", "True", 1);
 
+SELECT * FROM Comments;
+
+DROP TABLE IF EXISTS `Comments`;
+
+SELECT
+           *
+        FROM Comments c;
 INSERT INTO `Posts` VALUES (null, 1, 2, "Title 1", 01282021, "fake url", "fake news", TRUE);
 INSERT INTO `Posts` VALUES (null, 1, 2, "Title 2", 01282021, "fake url", "fake news", TRUE);
 
