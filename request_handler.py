@@ -153,8 +153,10 @@ class HandleRequests(BaseHTTPRequestHandler):
             new_entry = create_category(post_body)
         # elif resource == "customers":
         #     new_entry = create_customer(post_body)
-        if resource == "comments":
+        elif resource == "comments":
             new_entry = create_comment(post_body)
+        elif resource == "login":
+            new_entry = login_user(post_body)
 
         # Encode the new animal and send in response
         self.wfile.write(f"{new_entry}".encode())

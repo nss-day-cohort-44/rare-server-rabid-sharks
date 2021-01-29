@@ -109,12 +109,29 @@ def create_user(new_user):
         VALUES
             ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         """, (new_user['first_name'], new_user['last_name'],
-              new_user['email'], new_user['password'] , new_user['bio'],
-              new_user['username'], new_user["created_on"], new_user['profile_image_url'],new_user['active'],new_user['account_type_id']))
+            new_user['email'], new_user['password'] , new_user['bio'],
+            new_user['username'], new_user["created_on"], new_user['profile_image_url'],new_user['active'],new_user['account_type_id']))
 
         id = db_cursor.lastrowid
 
     return json.dumps(new_user)
+
+def login_user(credentials):
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
+        db_cursor.execute("""
+        SELECT
+            u.email,
+            u.password,
+        FROM Users u
+        WHERE u.email = credentials.email AND credential
+        """, )
+        data=db_cursor.fetchone()
+        reponse={
+            "valid": True,
+            "id": 1
+        }
+        return reponse
 
 def update_user(id, new_user):
     # Open a connection to the database
