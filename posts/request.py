@@ -1,5 +1,9 @@
+import categories
+from models import USER
+from models import Category
 import sqlite3
 import json
+import users
 from models import Post
 
 def get_all_posts():
@@ -16,8 +20,14 @@ def get_all_posts():
             p.publication_date,
             p.image_url,
             p.content,
-            p.approved
+            p.approved,
+            u.username username,
+            c.label label
         FROM Posts p
+        Join Users u
+            On u.id = p.user_id
+        Join Categories c
+            ON c.id = p.category_id
         """)
 
         posts = []
@@ -26,9 +36,20 @@ def get_all_posts():
 
         for row in dataset:
 
+
+
+            category = Category(row['id'], row['label'])
+
             post = Post(row['id'], row['user_id'], row['category_id'], row['title'], row['publication_date'], row['image_url'], row['content'], row['approved'])
 
-            posts.append(post.__dict__)
+
+            post.category = category.__dict__
+
+            post = post.__dict__
+            
+            post['username'] = row['username']
+
+            posts.append(post)
 
     return json.dumps(posts)
 
@@ -107,3 +128,30 @@ def update_post(id, new_post):
         return False
     else:
         return True
+
+def get_posts_by_user_id(user_id):
+    with sqlite3.connect("./rare.db") as conn:
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        select
+            p.id,
+            p.user_id,
+            p.category_id,
+            p.title,
+            p.publication_date,
+            p.image_url,
+            p.content,
+            p.approved
+        from posts p
+        where p.user_id = ?
+        """, ( user_id, ))
+
+        posts = []
+        dataset = db_cursor.fetchall()
+
+        for row in dataset:
+            post = Post(row['id'], row['user_id'], row['category_id'], row['title'], row['publication_date'], row['image_url'], row['content'], row['approved'])
+            posts.append(post.__dict__)
+    return json.dumps(posts)

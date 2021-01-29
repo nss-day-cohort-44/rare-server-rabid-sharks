@@ -124,7 +124,6 @@ INSERT INTO `Tags` VALUES (null, "Sports");
 INSERT INTO `Users` VALUES(null, "Silas", "Lowe", "silas@lowe.gmal", "Ahhhh", "I are me", "Slowe", "www.silaslowe.net", "10/10/10", "True", 2);
 INSERT INTO `Users` VALUES(null, "Frank", "Frankerson", "frank@lowe.gmal", "Yaaaaaaa", "I are not me", "Flowe", "www.frankerson.net", "11/11/11", "True", 1);
 
-<<<<<<< HEAD
 SELECT * FROM Comments;
 
 DROP TABLE IF EXISTS `Comments`;
@@ -132,7 +131,6 @@ DROP TABLE IF EXISTS `Comments`;
 SELECT
            *
         FROM Comments c;
-=======
 INSERT INTO `Posts` VALUES (null, 1, 2, "Title 1", 01282021, "fake url", "fake news", TRUE);
 INSERT INTO `Posts` VALUES (null, 1, 2, "Title 2", 01282021, "fake url", "fake news", TRUE);
 
@@ -158,4 +156,3 @@ INSERT INTO `Comments` VALUES (null, 2, 1, "Comment 4", 01302021);
 
 INSERT INTO `Categories` VALUES ( null, "Category 1");
 INSERT INTO `Categories` VALUES ( null, "Category 2");
->>>>>>> main
