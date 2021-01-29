@@ -146,3 +146,9 @@ FROM Comments;
 
 
 
+<<<<<<< HEAD
+=======
+INSERT INTO `Categories` VALUES ( null, "Category 1");
+INSERT INTO `Categories` VALUES ( null, "Category 2");
+
+>>>>>>> main
