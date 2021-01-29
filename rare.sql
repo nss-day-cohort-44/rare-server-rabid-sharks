@@ -125,3 +125,6 @@ INSERT INTO `Comments` VALUES (null, 2, 1, "Comment 4", 01302021);
 
 INSERT INTO `Categories` VALUES ( null, "Category 1");
 INSERT INTO `Categories` VALUES ( null, "Category 2");
+
+DELETE FROM Users
+WHERE id = 10;
