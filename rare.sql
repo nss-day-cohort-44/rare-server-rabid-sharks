@@ -110,18 +110,8 @@ INSERT INTO `Tags` VALUES (null, "Mouth-breathing");
 INSERT INTO `Tags` VALUES (null, "Sports");
 
 SELECT
-  t.id,
-  t.label
-FROM Tags t
+ *
+FROM Comments;
 
-INSERT INTO `Tags` VALUES (null, "Food");
-INSERT INTO `Tags` VALUES (null, "Mouth-breathing");
-INSERT INTO `Tags` VALUES (null, "Sports");
 
-INSERT INTO `Comments` VALUES (null, 1, 2, "Comment 1", 01282021);
-INSERT INTO `Comments` VALUES (null, 2, 1, "Comment 2", 01292021);
-INSERT INTO `Comments` VALUES (null, 1, 2, "Comment 3", 01302021);
-INSERT INTO `Comments` VALUES (null, 2, 1, "Comment 4", 01302021);
 
-INSERT INTO `Categories` VALUES ( null, "Category 1");
-INSERT INTO `Categories` VALUES ( null, "Category 2");
