@@ -121,17 +121,25 @@ def login_user(credentials):
         db_cursor = conn.cursor()
         db_cursor.execute("""
         SELECT
+            u.id,
             u.email,
-            u.password,
+            u.password
         FROM Users u
-        WHERE u.email = credentials.email AND credential
-        """, )
+        WHERE u.email == ? AND u.password == ?
+        """, (credentials["email"], credentials["password"]))
+
         data=db_cursor.fetchone()
-        reponse={
-            "valid": True,
-            "id": 1
-        }
-        return reponse
+        
+        print(data)
+        if data != None:
+            response={
+                "valid": True,
+                "token": data[0]}
+        else:
+            response={
+                "valid":False,
+            }
+        return json.dumps(response)
 
 def update_user(id, new_user):
     # Open a connection to the database
