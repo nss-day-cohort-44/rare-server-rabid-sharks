@@ -1,5 +1,7 @@
 class Post_tag():
-    def __init__(self, id, label):
+    def __init__(self, id, post_id, tag_id):
         self.id = id
-        self.label = label
+        self.post_id = post_id
+        self.tag_id = tag_id
+        self.tag = None
         

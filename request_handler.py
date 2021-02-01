@@ -1,5 +1,6 @@
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
+from postTags import *
 from posts import *
 from tags import *
 from comments import *
@@ -90,6 +91,8 @@ class HandleRequests(BaseHTTPRequestHandler):
                     response = f"{get_single_category(id)}"
                 else:
                     response = f"{get_all_categories()}"
+            elif resource == "post_tags":
+                    response = f"{get_all_Post_tags()}"
             # 5elif resource == "locations":
             #     if id is not None:
             #         response = f"{get_single_location(id)}"
@@ -113,8 +116,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             if key == "email" and resource == "users":
                 response = get_user_by_email(value)
 
-            # elif key == "location_id" and resource == "animals":
-            #     response = get_animals_by_location_id(value)
+            elif key == "post_id" and resource == "post_tags":
+                response = get_post_tags_by_post_id(value)
 
             elif key == "user_id" and resource == "posts":
                 response = get_posts_by_user_id(value)
@@ -151,8 +154,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             new_entry = create_user(post_body)
         elif resource == "categories":
             new_entry = create_category(post_body)
-        # elif resource == "customers":
-        #     new_entry = create_customer(post_body)
+        elif resource == "post_tags":
+            new_entry = create_post_tag(post_body)
         elif resource == "comments":
             new_entry = create_comment(post_body)
         elif resource == "login":
@@ -201,8 +204,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             update_post(id, post_body)
         elif resource == "tags":
             update_tag(id, post_body)
-        # elif resource == "employees":
-        #     update_employee(id, post_body)
+        elif resource == "post_tags":
+            update_post_tag(id, post_body)
         # elif resource == "locations":
         #     update_location(id, post_body)
         elif resource == "comments":
