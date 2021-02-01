@@ -92,7 +92,7 @@ def get_user_by_email(email):
         """, (email, ))
 
 
-        data= db_cursor.fetchone()
+        data = db_cursor.fetchone()
 
         user = USER(data["id"],data["first_name"],data["last_name"],data["email"],data["password"],data["bio"],data["username"],data["profile_image_url"],data["created_on"],data["active"],data["account_type_id"])
 
@@ -109,12 +109,38 @@ def create_user(new_user):
         VALUES
             ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         """, (new_user['first_name'], new_user['last_name'],
-              new_user['email'], new_user['password'] , new_user['bio'],
-              new_user['username'], new_user["created_on"], new_user['profile_image_url'],new_user['active'],new_user['account_type_id']))
+            new_user['email'], new_user['password'] , new_user['bio'],
+            new_user['username'], new_user["created_on"], new_user['profile_image_url'],new_user['active'],new_user['account_type_id']))
 
         id = db_cursor.lastrowid
-
+        new_user["valid"] = True
+        new_user["token"] = id
+        
     return json.dumps(new_user)
+
+def login_user(credentials):
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
+        db_cursor.execute("""
+        SELECT
+            u.id,
+            u.email,
+            u.password
+        FROM Users u
+        WHERE u.email == ? AND u.password == ?
+        """, (credentials["email"], credentials["password"]))
+
+        data=db_cursor.fetchone()
+
+        if data != None:
+            response={
+                "valid": True,
+                "token": data[0]}
+        else:
+            response={
+                "valid":False,
+            }
+        return json.dumps(response)
 
 def update_user(id, new_user):
     # Open a connection to the database
