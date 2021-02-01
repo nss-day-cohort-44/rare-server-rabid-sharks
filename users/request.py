@@ -111,8 +111,11 @@ def create_user(new_user):
         """, (new_user['first_name'], new_user['last_name'],
             new_user['email'], new_user['password'] , new_user['bio'],
             new_user['username'], new_user["created_on"], new_user['profile_image_url'],new_user['active'],new_user['account_type_id']))
-
+        
+        # Gets the id of the last row in the table. 
         id = db_cursor.lastrowid
+
+        # Adds the valid and token properties to the new_user object that is sent to the client. valid is set to true and token is set to the last row id.  
         new_user["valid"] = True
         new_user["token"] = id
         
@@ -121,6 +124,7 @@ def create_user(new_user):
 def login_user(credentials):
     with sqlite3.connect("./rare.db") as conn:
         db_cursor = conn.cursor()
+        # gets looks for a user with an email and password that matches what was posted from login using the credentials object. 
         db_cursor.execute("""
         SELECT
             u.id,
@@ -131,12 +135,13 @@ def login_user(credentials):
         """, (credentials["email"], credentials["password"]))
 
         data=db_cursor.fetchone()
-
+        # If the data object is not None then send a response to the client that is an object with a valid prop and a token prop. The token prop is the id of the found user. 
         if data != None:
             response={
                 "valid": True,
                 "token": data[0]}
         else:
+        # If no user with matching credentials was found then the data variable is set to None and a response object with valid set to false is returned to the client.
             response={
                 "valid":False,
             }
