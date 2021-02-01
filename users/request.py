@@ -92,7 +92,7 @@ def get_user_by_email(email):
         """, (email, ))
 
 
-        data= db_cursor.fetchone()
+        data = db_cursor.fetchone()
 
         user = USER(data["id"],data["first_name"],data["last_name"],data["email"],data["password"],data["bio"],data["username"],data["profile_image_url"],data["created_on"],data["active"],data["account_type_id"])
 
@@ -113,7 +113,9 @@ def create_user(new_user):
             new_user['username'], new_user["created_on"], new_user['profile_image_url'],new_user['active'],new_user['account_type_id']))
 
         id = db_cursor.lastrowid
-
+        new_user["valid"] = True
+        new_user["token"] = id
+        
     return json.dumps(new_user)
 
 def login_user(credentials):
@@ -129,8 +131,7 @@ def login_user(credentials):
         """, (credentials["email"], credentials["password"]))
 
         data=db_cursor.fetchone()
-        
-        print(data)
+
         if data != None:
             response={
                 "valid": True,
