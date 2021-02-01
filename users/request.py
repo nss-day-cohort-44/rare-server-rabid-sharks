@@ -1,7 +1,7 @@
 import sqlite3
 import json
 
-from models import USER
+from models import User
 
 def get_all_users():
     # Open a connection to the database
@@ -32,7 +32,7 @@ def get_all_users():
 
         for row in dataset:
 
-            user = USER(row["id"], row["first_name"], row["last_name"], row["email"], row["password"], row["bio"], row["username"], row["profile_image_url"], row["created_on"], row["active"], row["account_type_id"])
+            user = User(row["id"], row["first_name"], row["last_name"], row["email"], row["password"], row["bio"], row["username"], row["profile_image_url"], row["created_on"], row["active"], row["account_type_id"])
 
             users.append(user.__dict__)
         
@@ -65,7 +65,7 @@ def get_single_user(id):
         data= db_cursor.fetchone()
 
 
-        user = USER(data["id"],data["first_name"],data["last_name"],data["email"],data["password"],data["bio"],data["username"],data["profile_image_url"],data["created_on"],data["active"],data["account_type_id"])
+        user = User(data["id"],data["first_name"],data["last_name"],data["email"],data["password"],data["bio"],data["username"],data["profile_image_url"],data["created_on"],data["active"],data["account_type_id"])
 
     return json.dumps(user.__dict__)    
 
@@ -94,7 +94,7 @@ def get_user_by_email(email):
 
         data = db_cursor.fetchone()
 
-        user = USER(data["id"],data["first_name"],data["last_name"],data["email"],data["password"],data["bio"],data["username"],data["profile_image_url"],data["created_on"],data["active"],data["account_type_id"])
+        user = User(data["id"],data["first_name"],data["last_name"],data["email"],data["password"],data["bio"],data["username"],data["profile_image_url"],data["created_on"],data["active"],data["account_type_id"])
 
     return json.dumps(user.__dict__)
 
