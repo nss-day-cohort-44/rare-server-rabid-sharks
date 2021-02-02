@@ -181,3 +181,11 @@ SELECT
 FROM Users u
 JOIN AccountTypes a
   ON a.id = u.account_type_id;
+
+INSERT INTO `AccountTypes` VALUES ( null, "Author");
+INSERT INTO `AccountTypes` VALUES ( null, "Admin");
+
+CREATE TABLE “AccountTypes” (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "label" varchar
+);
