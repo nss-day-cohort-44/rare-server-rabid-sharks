@@ -7,7 +7,8 @@ DROP TABLE IF EXISTS `PostTags`;
 DROP TABLE IF EXISTS `Comments`;
 DROP TABLE IF EXISTS `Subscriptions`;
 DROP TABLE IF EXISTS `DemotionQueue`;
-DROP TABLE IF EXISTS `Users`;
+DROP TABLE IF EXISTS `Users`; 
+DROP TABLE IF EXISTS `AccountTypes`;
 
 CREATE TABLE "AccountTypes" (
   "id" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -154,6 +155,12 @@ INSERT INTO `Comments` VALUES (null, 2, 1, "Comment 4", 01302021);
 
 INSERT INTO `Categories` VALUES ( null, "Category 1");
 INSERT INTO `Categories` VALUES ( null, "Category 2");
+INSERT INTO `Categories` VALUES ( null, "Category 3");
+
+INSERT INTO `Categories` VALUES ( null, "Category 3");
+
+INSERT INTO `AccountTypes` VALUES ( null, "Admin");
+INSERT INTO `AccountTypes` VALUES ( null, "Author");
 
 DELETE FROM Users
 WHERE id = 12;
@@ -178,6 +185,12 @@ SELECT
             u.active,
             u.account_type_id,
             a.label account_type
-FROM Users u
-JOIN AccountTypes a
-  ON a.id = u.account_type_id;
+        FROM users u
+        JOIN AccountTypes a
+            ON a.id = u.account_type_id
+
+SELECT * 
+FROM Users
+
+SELECT * 
+FROM AccountTypes
