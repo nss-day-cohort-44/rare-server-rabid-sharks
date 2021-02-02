@@ -144,6 +144,9 @@ SELECT
   t.label
 FROM Tags t
 
+INSERT INTO `AccountTypes` VALUES ( null, "Author");
+INSERT INTO `AccountTypes` VALUES ( null, "Admin");
+
 INSERT INTO `Tags` VALUES (null, "Food");
 INSERT INTO `Tags` VALUES (null, "Mouth-breathing");
 INSERT INTO `Tags` VALUES (null, "Sports");

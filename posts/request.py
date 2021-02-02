@@ -28,6 +28,7 @@ def get_all_posts():
             On u.id = p.user_id
         Join Categories c
             ON c.id = p.category_id
+        ORDER BY p.publication_date DESC
         """)
 
         posts = []
@@ -75,6 +76,7 @@ def get_single_post(id):
             On u.id = p.user_id
         JOIN Categories c
             ON p.category_id = c.id
+        ORDER BY p.publication_date DESC
         WHERE p.id = ?
         """, (id, ))
 
@@ -165,6 +167,7 @@ def get_posts_by_user_id(user_id):
         JOIN Categories c
             ON p.category_id = c.id
         WHERE p.user_id = ?
+        ORDER BY p.publication_date DESC
         """, ( user_id, ))
 
         posts = []
