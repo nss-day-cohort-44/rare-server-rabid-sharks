@@ -155,7 +155,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         elif resource == "categories":
             new_entry = create_category(post_body)
         elif resource == "post_tags":
-            new_entry = create_post_tag(post_body)
+            new_entry = accept_tag_array_by_post_id(post_body)
         elif resource == "comments":
             new_entry = create_comment(post_body)
         elif resource == "login":
@@ -179,8 +179,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             delete_tag(id)
         elif resource == "categories":
             delete_category(id)
-        # elif resource == "customers":
-        #     delete_customer(id)
+        elif resource == "post_tags":
+            delete_post_tag(id)
         elif resource == "comments":
             delete_comment(id)
 

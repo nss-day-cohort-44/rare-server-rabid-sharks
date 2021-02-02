@@ -99,3 +99,23 @@ def get_post_tags_by_post_id(post_id):
             
             post_tags.append(post_tag.__dict__)
     return json.dumps(post_tags)
+
+def delete_post_tag(id):
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        DELETE FROM PostTags
+        WHERE id = ?
+        """, (id, ))
+
+def accept_tag_array_by_post_id(tag_dict):
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
+        for (index, tags) in enumerate(tag_dict['tag_array']):
+            db_cursor.execute("""
+            INSERT INTO PostTags
+                (post_id, tag_id)
+            VALUES
+                (?,?);
+            """, (tag_dict['post_id'], tag_dict['tag_array'][index], ))
