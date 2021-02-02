@@ -1,7 +1,8 @@
 import sqlite3
 import json
 
-from models import USER
+from models import User, account_type
+from models import Account_Type
 
 def get_all_users():
     # Open a connection to the database
@@ -22,8 +23,11 @@ def get_all_users():
             u.profile_image_url,
             u.created_on,
             u.active,
-            u.account_type_id
+            u.account_type_id,
+            a.label account_type
         FROM Users u
+        JOIN AccountTypes a
+            ON a.id = u.account_type_id
         """)
 
         users = []
@@ -32,7 +36,11 @@ def get_all_users():
 
         for row in dataset:
 
-            user = USER(row["id"], row["first_name"], row["last_name"], row["email"], row["password"], row["bio"], row["username"], row["profile_image_url"], row["created_on"], row["active"], row["account_type_id"])
+            user = User(row["id"], row["first_name"], row["last_name"], row["email"], row["password"], row["bio"], row["username"], row["profile_image_url"], row["created_on"], row["active"], row["account_type_id"])
+
+            account_type = Account_Type(row["account_type_id"], row["account_type"])
+
+            user.account_type = account_type.__dict__
 
             users.append(user.__dict__)
         
@@ -57,15 +65,21 @@ def get_single_user(id):
             u.profile_image_url,
             u.created_on,
             u.active,
-            u.account_type_id
+            u.account_type_id,
+            a.label account_type
         FROM Users u
-        WHERE id = ?
+        JOIN AccountTypes a
+            ON a.id = u.account_type_id
+        WHERE u.id = ?
         """, (id, ))
 
         data= db_cursor.fetchone()
 
+        user = User(data["id"],data["first_name"],data["last_name"],data["email"],data["password"],data["bio"],data["username"],data["profile_image_url"],data["created_on"],data["active"],data["account_type_id"])
 
-        user = USER(data["id"],data["first_name"],data["last_name"],data["email"],data["password"],data["bio"],data["username"],data["profile_image_url"],data["created_on"],data["active"],data["account_type_id"])
+        account_type = Account_Type(data["account_type_id"], data["account_type"])
+
+        user.account_type = account_type.__dict__
 
     return json.dumps(user.__dict__)    
 
@@ -94,7 +108,7 @@ def get_user_by_email(email):
 
         data = db_cursor.fetchone()
 
-        user = USER(data["id"],data["first_name"],data["last_name"],data["email"],data["password"],data["bio"],data["username"],data["profile_image_url"],data["created_on"],data["active"],data["account_type_id"])
+        user = User(data["id"],data["first_name"],data["last_name"],data["email"],data["password"],data["bio"],data["username"],data["profile_image_url"],data["created_on"],data["active"],data["account_type_id"])
 
     return json.dumps(user.__dict__)
 
@@ -111,8 +125,11 @@ def create_user(new_user):
         """, (new_user['first_name'], new_user['last_name'],
             new_user['email'], new_user['password'] , new_user['bio'],
             new_user['username'], new_user["created_on"], new_user['profile_image_url'],new_user['active'],new_user['account_type_id']))
-
+        
+        # Gets the id of the last row in the table. 
         id = db_cursor.lastrowid
+
+        # Adds the valid and token properties to the new_user object that is sent to the client. valid is set to true and token is set to the last row id.  
         new_user["valid"] = True
         new_user["token"] = id
         
@@ -121,6 +138,7 @@ def create_user(new_user):
 def login_user(credentials):
     with sqlite3.connect("./rare.db") as conn:
         db_cursor = conn.cursor()
+        # gets looks for a user with an email and password that matches what was posted from login using the credentials object. 
         db_cursor.execute("""
         SELECT
             u.id,
@@ -131,12 +149,13 @@ def login_user(credentials):
         """, (credentials["email"], credentials["password"]))
 
         data=db_cursor.fetchone()
-
+        # If the data object is not None then send a response to the client that is an object with a valid prop and a token prop. The token prop is the id of the found user. 
         if data != None:
             response={
                 "valid": True,
                 "token": data[0]}
         else:
+        # If no user with matching credentials was found then the data variable is set to None and a response object with valid set to false is returned to the client.
             response={
                 "valid":False,
             }

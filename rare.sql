@@ -164,4 +164,20 @@ SELECT
   u.password
 FROM Users u
 WHERE u.email == "s@s" AND u.password == "s";
-        
+
+SELECT
+            u.id,
+            u.first_name,
+            u.last_name,
+            u.email,
+            u.password,
+            u.bio,
+            u.username,
+            u.profile_image_url,
+            u.created_on,
+            u.active,
+            u.account_type_id,
+            a.label account_type
+FROM Users u
+JOIN AccountTypes a
+  ON a.id = u.account_type_id;
