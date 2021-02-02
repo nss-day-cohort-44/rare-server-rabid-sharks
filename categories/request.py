@@ -40,6 +40,7 @@ def get_all_categories():
             c.id,
             c.label
         FROM Categories c
+        ORDER BY label ASC;
         """)
 
         # Initialize an empty list to hold all category representations
