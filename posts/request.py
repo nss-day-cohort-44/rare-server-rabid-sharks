@@ -1,5 +1,5 @@
 import categories
-from models import USER
+from models import User
 from models import Category
 import sqlite3
 import json
