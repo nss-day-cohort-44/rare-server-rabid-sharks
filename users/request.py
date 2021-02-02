@@ -1,7 +1,8 @@
 import sqlite3
 import json
 
-from models import User
+from models import User, account_type
+from models import Account_Type
 
 def get_all_users():
     # Open a connection to the database
@@ -22,8 +23,11 @@ def get_all_users():
             u.profile_image_url,
             u.created_on,
             u.active,
-            u.account_type_id
+            u.account_type_id,
+            a.label account_type
         FROM Users u
+        JOIN AccountTypes a
+            ON a.id = u.account_type_id
         """)
 
         users = []
@@ -33,6 +37,10 @@ def get_all_users():
         for row in dataset:
 
             user = User(row["id"], row["first_name"], row["last_name"], row["email"], row["password"], row["bio"], row["username"], row["profile_image_url"], row["created_on"], row["active"], row["account_type_id"])
+
+            account_type = Account_Type(row["account_type_id"], row["account_type"])
+
+            user.account_type = account_type.__dict__
 
             users.append(user.__dict__)
         
@@ -57,15 +65,21 @@ def get_single_user(id):
             u.profile_image_url,
             u.created_on,
             u.active,
-            u.account_type_id
+            u.account_type_id,
+            a.label account_type
         FROM Users u
-        WHERE id = ?
+        JOIN AccountTypes a
+            ON a.id = u.account_type_id
+        WHERE u.id = ?
         """, (id, ))
 
         data= db_cursor.fetchone()
 
-
         user = User(data["id"],data["first_name"],data["last_name"],data["email"],data["password"],data["bio"],data["username"],data["profile_image_url"],data["created_on"],data["active"],data["account_type_id"])
+
+        account_type = Account_Type(data["account_type_id"], data["account_type"])
+
+        user.account_type = account_type.__dict__
 
     return json.dumps(user.__dict__)    
 

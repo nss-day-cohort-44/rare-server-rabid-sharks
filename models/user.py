@@ -12,4 +12,5 @@ class User():
         self.created_on = created_on
         self.active = active
         self.account_type_id = account_type_id
+        self.account_type = None
 
