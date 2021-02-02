@@ -15,6 +15,7 @@ def get_all_tags():
             t.id,
             t.label
         FROM Tags t
+        ORDER BY label COLLATE NOCASE ASC;
         """)
 
         # Initialize an empty list to hold all tag representations
@@ -45,6 +46,7 @@ def get_single_tag(id):
             t.id,
             t.label
         FROM tags t
+        ORDER BY label COLLATE NOCASE ASC;
         WHERE t.id = ?
         """, (id, ))
 
