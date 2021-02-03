@@ -6,7 +6,9 @@
 
 This server code pairs with the Rare Publishing Platform React App which can be found here https://github.com/nss-day-cohort-44/rare-rabid-sharks
 
-Rare App allows users to make, view, edit, and comment their own posts, as well as the posts of other users
+Rare App allows users to make, view, edit, and comment their own posts, as well as the posts of other users.
+
+The following Entity Relationship Diagram details the layout of our data tables:
 
 ![RareServerERD.png](RareServerERD.png)
 RareServerERD.png
@@ -63,13 +65,6 @@ dot preceded by a single space.
 ```watchgod request_handler.main [09:34:37] watching "/Users/.../workspace/python-server" and reloading "request_handler.main" on changes…``` 
 
 
-
-
-
-
-
-
-
 ## Screenshots
 
 ![myPosts.png](myPosts.png)
@@ -85,7 +80,7 @@ dot preceded by a single space.
 
 ## Technologies Used
 
-This application was built using [Python] and [SQLite3]  
+This application was built using Python, Postman, and SQLite3  
 
 ## Author
 
