@@ -55,11 +55,11 @@ Create a virtual environment:
 
 Once the virtual environment is created, install the 3rd-party software. 
 
-<pipenv install autopep8 watchgod>
+```pipenv install autopep8 watchgod ```
 
 Enter in the following command to start your new data server written in Python: 
 
-<watchgod request_handler.main>
+```watchgod request_handler.main ```
 
 > If there are no errors in the code, you will see the following, terse output:  
  
