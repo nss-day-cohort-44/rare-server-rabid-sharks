@@ -1,3 +1,4 @@
+from models.user import User
 import sqlite3
 import json
 from models import Comment
@@ -58,8 +59,11 @@ def get_comments_by_post_id(post_id):
             c.post_id,
             c.author_id,
             c.content,
-            c.created_on
+            c.created_on,
+            u.username username
         FROM Comments c
+        JOIN Users u
+            ON u.id = c.author_id
         WHERE c.post_id = ?
         ORDER BY c.created_on DESC
         """, ( post_id, ))
@@ -69,8 +73,10 @@ def get_comments_by_post_id(post_id):
         for row in dataset:
             comment = Comment(row['id'], row['post_id'],
                                 row['author_id'], row['content'], 
-                                row['created_on'])
+                                row['created_on'],row['username'])
+
             comments.append(comment.__dict__)
+
 
     return json.dumps(comments)
 

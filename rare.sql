@@ -199,5 +199,15 @@ SELECT
 SELECT * 
 FROM Users
 
-SELECT * 
-FROM AccountTypes
+SELECT  
+            c.id,
+            c.post_id,
+            c.author_id,
+            c.content,
+            c.created_on,
+            u.username username
+        FROM Comments c
+        JOIN Users u
+            ON u.id = c.author_id
+        WHERE c.post_id = 9
+        ORDER BY c.created_on DESC;
