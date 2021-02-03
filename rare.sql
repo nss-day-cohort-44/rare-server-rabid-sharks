@@ -123,7 +123,7 @@ INSERT INTO `Tags` VALUES (null, "Sports");
 INSERT INTO `Users` VALUES(null, "Silas", "Lowe", "silas@lowe.gmal", "Ahhhh", "I are me", "Slowe", "www.silaslowe.net", "10/10/10", "True", 2);
 INSERT INTO `Users` VALUES(null, "Frank", "Frankerson", "frank@lowe.gmal", "Yaaaaaaa", "I are not me", "Flowe", "www.frankerson.net", "11/11/11", "True", 1);
 
-SELECT * FROM Comments;
+SELECT * FROM Users;
 SELECT * FROM Posts;
 
 UPDATE Comments
