@@ -33,19 +33,19 @@ RareServerERD.png
  
 1. Create a directory from which to deploy the application. 
 	
-<mkdir RARE>
+```mkdir RARE ```
  
-Within RARE, create two sub-directories, CLIENT and SERVER 
+1. Within RARE, create two sub-directories, CLIENT and SERVER 
 
-<mkdir CLIENT>
+```mkdir CLIENT ```
 	
-<mkdir SERVER>
+```mkdir SERVER ```
  
-Navigate into the SERVER sub-directory. 
+1. Navigate into the SERVER sub-directory. 
  
-<cd CLIENT>
+```cd CLIENT ```
  
-Enter the following commands: 
+1. Enter the following commands: 
 	
  <git clone git@github.com:nss-day-cohort-44/rare-rabid-sharks.git .> <-- note the single 	
 dot preceded by a single space.  
