@@ -1,4 +1,4 @@
-# [RARE Publishing Platform Server in Python]
+# RARE Publishing Platform Server in Python
 
 > Nashville Software School Group Project for Rabid Sharks
 
@@ -13,57 +13,54 @@ RareServerERD.png
 
 ## Features
 
-* Embedded YouTube player so that users can easily watch videos within the app.
-* Transcription Request creation and activation process that is intuitive, easy-to-use, and minimally disruptive to the user's immersion in their video of choice.
-* Responsive design so that the site remains not only functional, but also a joy to use regardless of the user's screen size.
-* Internationalization! The app is all set up and ready to be translated into any language spoken on this Earth! There is already a full translation set for Chinese set up in the app (albeit surely with wild grammatical and vocabulary inaccuracies since I, a very much non-fluent Chinese speaker, made it).
-    * The app makes its choice on what locale the user is in based on the user's primary browser language. To see the Chinese version of the site, you must change your browser's language to Chinese!
+* Full CRUD endpoints for Users, Posts, Tags, Categories, Comments.
+* Query endpoints to return data lists by various id categories.
+* Access and control of database through SQLite statements.
 
+## Setting Up Database
 
-### Setting Up Database
-
-# Pulling down the Server-Side Repo. 
+### Pulling down the Server-Side Repo. 
  
 > Note: This project is meant to run simultaneously with the Client-Side Repo found here: https://github.com/nss-day-cohort-44/rare-rabid-sharks  
  
 > Depending on which repo you start with, you may already have the following directories set up.  
 > This project requires Python  
  
-# To Begin installing the Server-Side Repo, complete the following steps: 
+### To Begin installing the Server-Side Repo, complete the following steps: 
  
 1. Create a directory from which to deploy the application. 
 	
-<mkdir RARE>
+```mkdir RARE ```
  
-Within RARE, create two sub-directories, CLIENT and SERVER 
+2. Within RARE, create two sub-directories, CLIENT and SERVER 
 
-<mkdir CLIENT>
+```mkdir CLIENT ```
 	
-<mkdir SERVER>
+```mkdir SERVER ```
  
-Navigate into the SERVER sub-directory. 
+3. Navigate into the SERVER sub-directory. 
  
-<cd CLIENT>
+```cd CLIENT ```
  
-Enter the following commands: 
+4. Enter the following commands: 
 	
- <git clone git@github.com:nss-day-cohort-44/rare-rabid-sharks.git .> <-- note the single 	
+```git clone git@github.com:nss-day-cohort-44/rare-rabid-sharks.git .``` <-- note the single 	
 dot preceded by a single space.  
  
-Create a virtual environment: 
-<pipenv shell>
+5. Create a virtual environment: 
+```pipenv shell```
 
-Once the virtual environment is created, install the 3rd-party software. 
+6. Once the virtual environment is created, install the 3rd-party software. 
 
-<pipenv install autopep8 watchgod>
+```pipenv install autopep8 watchgod ```
 
-Enter in the following command to start your new data server written in Python: 
+7. Enter in the following command to start your new data server written in Python: 
 
-<watchgod request_handler.main>
+```watchgod request_handler.main ```
 
 > If there are no errors in the code, you will see the following, terse output:  
  
-<watchgod request_handler.main [09:34:37] watching "/Users/.../workspace/python-server" and reloading "request_handler.main" on changes…> 
+```watchgod request_handler.main [09:34:37] watching "/Users/.../workspace/python-server" and reloading "request_handler.main" on changes…``` 
 
 
 
@@ -75,7 +72,8 @@ Enter in the following command to start your new data server written in Python:
 
 ## Screenshots
 
-myPosts.png
+![myPosts.png](myPosts.png)
+
 
 ## A guided workflow, if it so interests you
 
