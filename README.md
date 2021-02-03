@@ -17,44 +17,44 @@ RareServerERD.png
 * Query endpoints to return data lists by various id categories.
 * Access and control of database through SQLite statements.
 
-### Setting Up Database
+## Setting Up Database
 
-# Pulling down the Server-Side Repo. 
+### Pulling down the Server-Side Repo. 
  
 > Note: This project is meant to run simultaneously with the Client-Side Repo found here: https://github.com/nss-day-cohort-44/rare-rabid-sharks  
  
 > Depending on which repo you start with, you may already have the following directories set up.  
 > This project requires Python  
  
-# To Begin installing the Server-Side Repo, complete the following steps: 
+### To Begin installing the Server-Side Repo, complete the following steps: 
  
 1. Create a directory from which to deploy the application. 
 	
 ```mkdir RARE ```
  
-1. Within RARE, create two sub-directories, CLIENT and SERVER 
+2. Within RARE, create two sub-directories, CLIENT and SERVER 
 
 ```mkdir CLIENT ```
 	
 ```mkdir SERVER ```
  
-1. Navigate into the SERVER sub-directory. 
+3. Navigate into the SERVER sub-directory. 
  
 ```cd CLIENT ```
  
-1. Enter the following commands: 
+4. Enter the following commands: 
 	
 ```git clone git@github.com:nss-day-cohort-44/rare-rabid-sharks.git .``` <-- note the single 	
 dot preceded by a single space.  
  
-Create a virtual environment: 
+5. Create a virtual environment: 
 ```pipenv shell```
 
-Once the virtual environment is created, install the 3rd-party software. 
+6. Once the virtual environment is created, install the 3rd-party software. 
 
 ```pipenv install autopep8 watchgod ```
 
-Enter in the following command to start your new data server written in Python: 
+7. Enter in the following command to start your new data server written in Python: 
 
 ```watchgod request_handler.main ```
 
