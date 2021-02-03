@@ -8,7 +8,7 @@ This server code pairs with the Rare Publishing Platform React App which can be 
 
 Rare App allows users to make, view, edit, and comment their own posts, as well as the posts of other users
 
-(insert ERD here)
+![RareServerERD.png](RareServerERD.png)
 RareServerERD.png
 
 ## Features
