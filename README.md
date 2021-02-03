@@ -1,4 +1,4 @@
-# [RARE Publishing Platform Server in Python]
+# RARE Publishing Platform Server in Python
 
 > Nashville Software School Group Project for Rabid Sharks
 
@@ -72,7 +72,8 @@ Enter in the following command to start your new data server written in Python:
 
 ## Screenshots
 
-myPosts.png
+![myPosts.png](myPosts.png)
+
 
 ## A guided workflow, if it so interests you
 
