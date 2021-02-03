@@ -76,7 +76,6 @@ def get_single_post(id):
             On u.id = p.user_id
         JOIN Categories c
             ON p.category_id = c.id
-        ORDER BY p.publication_date DESC
         WHERE p.id = ?
         """, (id, ))
 
