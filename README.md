@@ -13,12 +13,9 @@ RareServerERD.png
 
 ## Features
 
-* Embedded YouTube player so that users can easily watch videos within the app.
-* Transcription Request creation and activation process that is intuitive, easy-to-use, and minimally disruptive to the user's immersion in their video of choice.
-* Responsive design so that the site remains not only functional, but also a joy to use regardless of the user's screen size.
-* Internationalization! The app is all set up and ready to be translated into any language spoken on this Earth! There is already a full translation set for Chinese set up in the app (albeit surely with wild grammatical and vocabulary inaccuracies since I, a very much non-fluent Chinese speaker, made it).
-    * The app makes its choice on what locale the user is in based on the user's primary browser language. To see the Chinese version of the site, you must change your browser's language to Chinese!
-
+* Full CRUD endpoints for Users, Posts, Tags, Categories, Comments.
+* Query endpoints to return data lists by various id categories.
+* Access and control of database through SQLite statements.
 
 ### Setting Up Database
 
@@ -47,11 +44,11 @@ RareServerERD.png
  
 1. Enter the following commands: 
 	
- <git clone git@github.com:nss-day-cohort-44/rare-rabid-sharks.git .> <-- note the single 	
+```git clone git@github.com:nss-day-cohort-44/rare-rabid-sharks.git .``` <-- note the single 	
 dot preceded by a single space.  
  
 Create a virtual environment: 
-<pipenv shell>
+```pipenv shell```
 
 Once the virtual environment is created, install the 3rd-party software. 
 
@@ -63,7 +60,7 @@ Enter in the following command to start your new data server written in Python:
 
 > If there are no errors in the code, you will see the following, terse output:  
  
-<watchgod request_handler.main [09:34:37] watching "/Users/.../workspace/python-server" and reloading "request_handler.main" on changes…> 
+```watchgod request_handler.main [09:34:37] watching "/Users/.../workspace/python-server" and reloading "request_handler.main" on changes…``` 
 
 
 
