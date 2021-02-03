@@ -61,6 +61,7 @@ def get_comments_by_post_id(post_id):
             c.created_on
         FROM Comments c
         WHERE c.post_id = ?
+        ORDER BY c.created_on DESC
         """, ( post_id, ))
 
         comments = []
