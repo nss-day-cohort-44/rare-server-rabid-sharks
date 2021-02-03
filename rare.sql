@@ -188,12 +188,10 @@ SELECT
             u.active,
             u.account_type_id,
             a.label account_type
-        FROM users u
-        JOIN AccountTypes a
-            ON a.id = u.account_type_id
+FROM Users u
+JOIN AccountTypes a
+  ON a.id = u.account_type_id;
 
-SELECT * 
-FROM Users
+INSERT INTO `AccountTypes` VALUES ( null, "Author");
+INSERT INTO `AccountTypes` VALUES ( null, "Admin");
 
-SELECT * 
-FROM AccountTypes
