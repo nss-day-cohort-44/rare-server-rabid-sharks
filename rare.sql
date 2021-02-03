@@ -124,8 +124,12 @@ INSERT INTO `Users` VALUES(null, "Silas", "Lowe", "silas@lowe.gmal", "Ahhhh", "I
 INSERT INTO `Users` VALUES(null, "Frank", "Frankerson", "frank@lowe.gmal", "Yaaaaaaa", "I are not me", "Flowe", "www.frankerson.net", "11/11/11", "True", 1);
 
 SELECT * FROM Comments;
+SELECT * FROM Posts;
 
-DROP TABLE IF EXISTS `Comments`;
+UPDATE Comments
+            Set
+                post_id = 8
+        WHERE id = 46;
 
 SELECT
            *
@@ -188,10 +192,12 @@ SELECT
             u.active,
             u.account_type_id,
             a.label account_type
-FROM Users u
-JOIN AccountTypes a
-  ON a.id = u.account_type_id;
+        FROM users u
+        JOIN AccountTypes a
+            ON a.id = u.account_type_id
 
-INSERT INTO `AccountTypes` VALUES ( null, "Author");
-INSERT INTO `AccountTypes` VALUES ( null, "Admin");
+SELECT * 
+FROM Users
 
+SELECT * 
+FROM AccountTypes
