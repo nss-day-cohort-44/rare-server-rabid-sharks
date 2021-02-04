@@ -1,3 +1,4 @@
+from models.user import User
 import sqlite3
 import json
 from models import Comment
@@ -8,13 +9,16 @@ def get_all_comments():
         db_cursor = conn.cursor()
         # write the SQL QUERY
         db_cursor.execute("""
-        SELECT
+        SELECT  
             c.id,
             c.post_id,
             c.author_id,
             c.content,
-            c.created_on
+            c.created_on,
+            u.username username
         FROM Comments c
+        JOIN Users u
+            ON u.id = c.author_id
         """)
         # inittialize new empty LIST to hold all the emp DICTs
         comments = []
@@ -23,7 +27,8 @@ def get_all_comments():
         # iterate the list
         for row in dataset:
             comment = Comment(row['id'], row['post_id'], 
-                                row['author_id'], row['content'], row['created_on'],)
+                                row['author_id'], row['content'], 
+                                row['created_on'], row['username'])
             comments.append(comment.__dict__)
     return json.dumps(comments)
 
@@ -32,19 +37,22 @@ def get_single_comment(id):
         conn.row_factory = sqlite3.Row
         db_cursor = conn.cursor()
         db_cursor.execute("""
-        SELECT
+        SELECT  
             c.id,
             c.post_id,
             c.author_id,
             c.content,
-            c.created_on
+            c.created_on,
+            u.username username
         FROM Comments c
+        JOIN Users u
+            ON u.id = c.author_id
         WHERE c.id = ?
         """, (id,))
         data = db_cursor.fetchone()
         comment = Comment(data['id'], data['post_id'],
                             data['author_id'], data['content'],
-                            data['created_on'])
+                            data['created_on'], data['username'])
         return json.dumps(comment.__dict__)
 
 def get_comments_by_post_id(post_id):
@@ -58,8 +66,11 @@ def get_comments_by_post_id(post_id):
             c.post_id,
             c.author_id,
             c.content,
-            c.created_on
+            c.created_on,
+            u.username username
         FROM Comments c
+        JOIN Users u
+            ON u.id = c.author_id
         WHERE c.post_id = ?
         ORDER BY c.created_on DESC
         """, ( post_id, ))
@@ -69,8 +80,10 @@ def get_comments_by_post_id(post_id):
         for row in dataset:
             comment = Comment(row['id'], row['post_id'],
                                 row['author_id'], row['content'], 
-                                row['created_on'])
+                                row['created_on'], row['username'])
+
             comments.append(comment.__dict__)
+
 
     return json.dumps(comments)
 
